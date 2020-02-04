@@ -20,11 +20,9 @@ using VRCTools;
 
 namespace AvatarFav
 {
-    [VRCModInfo("AvatarFav", "1.2.9", "Slaynash")]
+    [VRCModInfo("AvatarFav2", "1.3.0", "Anonymous-BCFED")]
     public class AvatarFavMod : VRCMod
     {
-
-
         public static AvatarFavMod instance;
 
         private static string _apiKey = null;
@@ -62,6 +60,8 @@ namespace AvatarFav
 
         internal static FieldInfo categoryField;
         private List<Action> actions = new List<Action>();
+
+        internal static Dictionary<string, SerializableApiAvatar> savedFavoriteAvatars = new Dictionary<string, SerializableApiAvatar>();
 
         void OnApplicationStart()
         {
@@ -117,7 +117,6 @@ namespace AvatarFav
                 avatarModel = pageAvatar.transform.Find("AvatarModel");
                 baseAvatarModelPosition = avatarModel.localPosition;
 
-
                 FileInfo[] files = new DirectoryInfo(Environment.CurrentDirectory).GetFiles("Avatars.txt", SearchOption.AllDirectories);
                 VRCModLogger.Log("[AvatarFavMod] Found " + files.Length + " Avatars.txt");
                 if (files.Length > 0)
@@ -162,17 +161,7 @@ namespace AvatarFav
                 VRCModNetworkManager.SetRPCListener("slaynash.avatarfav.error", (senderId, data) => addError = data);
                 VRCModNetworkManager.SetRPCListener("slaynash.avatarfav.avatarlistupdated", (senderId, data) =>
                 {
-                    lock (favoriteAvatarList)
-                    {
-                        // Update Ui
-                        favButton.GetComponent<Button>().interactable = true;
-                        SerializableApiAvatar[] serializedAvatars = SerializableApiAvatar.ParseJson(data);
-                        favoriteAvatarList.Clear();
-                        foreach (SerializableApiAvatar serializedAvatar in serializedAvatars)
-                            favoriteAvatarList.Add(serializedAvatar.id);
-
-                        avatarAvailables = true;
-                    }
+                    handleFreshJSON(data);
                 });
 
 
@@ -271,6 +260,28 @@ namespace AvatarFav
 
                 VRCModLogger.Log("[AvatarFav] AvatarFav Initialised !");
                 initialised = true;
+            }
+        }
+
+        private void handleFreshJSON(string data, bool nosave=false)
+        {
+            lock (favoriteAvatarList)
+            {
+                lock (savedFavoriteAvatars)
+                {
+                    // Update Ui
+                    favButton.GetComponent<Button>().interactable = true;
+                    SerializableApiAvatar[] serializedAvatars = SerializableApiAvatar.ParseJson(data);
+                    favoriteAvatarList.Clear();
+                    foreach (SerializableApiAvatar serializedAvatar in serializedAvatars)
+                    {
+                        favoriteAvatarList.Add(serializedAvatar.id);
+                        savedFavoriteAvatars[serializedAvatar.id] = serializedAvatar;
+                    }
+                    if(!nosave)
+                        Save();
+                    avatarAvailables = true;
+                }
             }
         }
 
@@ -559,20 +570,23 @@ namespace AvatarFav
             );
         }
 
-
-
-
-
         private void RequestAvatars()
         {
-            new Thread(() => VRCModNetworkManager.SendRPC("slaynash.avatarfav.getavatars", "", null, (error) =>
-            {
-                VRCModLogger.Log("[AvatarFav] Unable to fetch avatars: Server returned " + error);
-                if (error.Equals("SERVER_DISCONNECTED"))
+            // Send request RPC only if we can't load them locally.
+            if (!File.Exists("AvatarFav.json")) {
+                new Thread(() => VRCModNetworkManager.SendRPC("slaynash.avatarfav.getavatars", "", null, (error) =>
                 {
-                    waitingForServer = true;
-                }
-            })).Start();
+                    VRCModLogger.Log("[AvatarFav] Unable to fetch avatars: Server returned " + error);
+                    if (error.Equals("SERVER_DISCONNECTED"))
+                    {
+                        waitingForServer = true;
+                    }
+                })).Start();
+            } else {
+                VRCModLogger.Log("[AvatarFav] Loading from cache...");
+
+                handleFreshJSON(File.ReadAllText("AvatarFav.json"), nosave:true);
+            }
         }
         private void AddAvatar(string id)
         {
@@ -584,7 +598,25 @@ namespace AvatarFav
                     favButton.GetComponent<Button>().interactable = true;
                 });
             }).Start();
+            if (!savedFavoriteAvatars.ContainsKey(id))
+            {
+                savedFavoriteAvatars[id] = new SerializableApiAvatar() { id = id };
+                Save();
+            }
         }
+
+        internal static void Save()
+        {
+            var sal = new SerializableApiAvatarList();
+            sal.list = savedFavoriteAvatars.Values.ToArray();
+            using(var s = File.OpenWrite("AvatarFav.json.tmp"))
+            using(var w = new StreamWriter(s))
+            {
+                w.Write(JsonConvert.SerializeObject(sal));
+            }
+            File.Move("AvatarFav.json.tmp", "AvatarFav.json");
+        }
+
         private void RemoveAvatar(string id)
         {
             new Thread(() =>
@@ -595,6 +627,11 @@ namespace AvatarFav
                     favButton.GetComponent<Button>().interactable = true;
                 });
             }).Start();
+            if (savedFavoriteAvatars.ContainsKey(id))
+            {
+                savedFavoriteAvatars.Remove(id);
+                Save();
+            }
         }
     }
 }

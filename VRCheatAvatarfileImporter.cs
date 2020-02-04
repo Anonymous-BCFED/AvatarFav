@@ -97,6 +97,8 @@ namespace AvatarFav
                                 if (aa.releaseStatus == "public")
                                 {
                                     VRCModLogger.Log("[VRCheatAvatarfileImporter] Adding avatar " + avatarName + " to the database");
+                                    AvatarFavMod.savedFavoriteAvatars[avatarId] = aa;
+                                    AvatarFavMod.Save();
                                     yield return AddAvatar(avatarId, avatarName);
                                 }
                                 else VRCModLogger.Log("[VRCheatAvatarfileImporter] Unable to add the avatar " + avatarName + ": This avatar is not public anymore (private)");

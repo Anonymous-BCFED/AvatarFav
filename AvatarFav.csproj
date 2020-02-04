@@ -33,42 +33,42 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>D:\jeux\steam\SteamApps\common\VRChat\VRChat_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\SteamApps\common\VRChat\VRChat_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\jeux\steam\SteamApps\common\VRChat\VRChat_Data\Managed\Newtonsoft.Json.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\SteamApps\common\VRChat\VRChat_Data\Managed\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="UnityEngine">
-      <HintPath>D:\jeux\steam\SteamApps\common\VRChat\VRChat_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\SteamApps\common\VRChat\VRChat_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\jeux\steam\SteamApps\common\VRChat\VRChat_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\SteamApps\common\VRChat\VRChat_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:\jeux\steam\SteamApps\common\VRChat\VRChat_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\SteamApps\common\VRChat\VRChat_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>D:\jeux\steam\SteamApps\common\VRChat\VRChat_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\SteamApps\common\VRChat\VRChat_Data\Managed\UnityEngine.UIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestWWWModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\jeux\steam\SteamApps\common\VRChat\VRChat_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\SteamApps\common\VRChat\VRChat_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
     </Reference>
     <Reference Include="VRCCore-Editor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\jeux\steam\SteamApps\common\VRChat\VRChat_Data\Managed\VRCCore-Editor.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\SteamApps\common\VRChat\VRChat_Data\Managed\VRCCore-Editor.dll</HintPath>
     </Reference>
     <Reference Include="VRCCore-Standalone, Version=0.0.0.0, Culture=neutral, PublicKeyToken=67033c44591afb45, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\jeux\steam\SteamApps\common\VRChat\VRChat_Data\Managed\VRCCore-Standalone.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\SteamApps\common\VRChat\VRChat_Data\Managed\VRCCore-Standalone.dll</HintPath>
     </Reference>
     <Reference Include="VRCSDK2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=67033c44591afb45, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\jeux\steam\SteamApps\common\VRChat\VRChat_Data\Managed\VRCSDK2.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\SteamApps\common\VRChat\VRChat_Data\Managed\VRCSDK2.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -81,13 +81,13 @@
     <Compile Include="VRCheatAvatarfileImporter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VRCTools\VRCTools.csproj">
-      <Project>{47f06fb3-c414-426e-a09d-65f23902c16f}</Project>
-      <Name>VRCTools</Name>
-    </ProjectReference>
     <ProjectReference Include="..\VRCModLoader\VRCModLoader.csproj">
       <Project>{2c92a34d-da60-42d7-b829-86aee48352c0}</Project>
       <Name>VRCModLoader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VRCTools\VRCTools.csproj">
+      <Project>{47f06fb3-c414-426e-a09d-65f23902c16f}</Project>
+      <Name>VRCTools</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
