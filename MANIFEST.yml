@@ -10,11 +10,12 @@ description: AvatarFav, but prefers to use local caching instead of the remote s
 version: 1.3.3
 license: MIT
 gameVersion:
-  version: 2019.3.2p3:866
+  version: 2019.3.2p3
+  build: 866
 siteURL: https://github.com/Anonymous-BCFED/AvatarFav
 issuesURL: https://github.com/Anonymous-BCFED/AvatarFav/issues
 downloadURL: https://github.com/Anonymous-BCFED/AvatarFav/releases/download/v1.3.3/AvatarFavLocal-1.3.3.dll
 dependencies:
 - id: VRCTools
   comparator: ==
-  version: 0.6.5
+  version: 0.9.0
