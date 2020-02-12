@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-namespace AvatarFav
+namespace AvatarFav.Model
 {
     public class SerializableApiAvatar
     {
