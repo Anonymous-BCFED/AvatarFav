@@ -7,14 +7,14 @@ authors:
   - name: Anonymous-BCFED
     role: Current maintainer
 description: AvatarFav, but prefers to use local caching instead of the remote server that crashes every morning.  Will copy avatar metadata to local cache when it first runs.
-version: 1.3.3
+version: 1.3.4
 license: MIT
 gameVersion:
   version: 2019.3.2p3
   build: 866
 siteURL: https://github.com/Anonymous-BCFED/AvatarFav
 issuesURL: https://github.com/Anonymous-BCFED/AvatarFav/issues
-downloadURL: https://github.com/Anonymous-BCFED/AvatarFav/releases/download/v1.3.3/AvatarFavLocal-1.3.3.dll
+downloadURL: https://github.com/Anonymous-BCFED/AvatarFav/releases/download/v1.3.4/AvatarFavLocal-1.3.4.dll
 dependencies:
 - id: VRCTools
   comparator: ==

@@ -21,7 +21,7 @@ using VRCTools;
 
 namespace AvatarFav
 {
-    [VRCModInfo("AvatarFavLocal", "1.3.3", "Anonymous-BCFED")]
+    [VRCModInfo("AvatarFavLocal", "1.3.4", "Anonymous-BCFED")]
     public class AvatarFavMod : VRCMod
     {
         public static AvatarFavMod instance;
