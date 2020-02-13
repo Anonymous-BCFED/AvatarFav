@@ -9,10 +9,10 @@ VRCNW (VRChat Mod Network) often can't handle the load, and has been known to gl
 
 1. The developers of this mod are not affiliated with or working for VRChat in any way, shape, or form. We are third-party, unauthorized developers.
 1. This software is provided to you without warranty.  
-  1. You accept the risks of using third-party, unauthorized client mods when you download and install this mod.
-    1. **Unauthorized client modifications are against VRChat Terms of Service.** Use of this software can result in a ban from the game.
-    1. While we try to keep issues to a minimum, **this software may result in crashes and unwanted behaviour ("bugs").** Don't ask VRChat for support or you may get banned.
-  1. We are not responsible if something happens, like your account getting banned or VRChat crashing.
+   1. You accept the risks of using third-party, unauthorized client mods when you download and install this mod.
+      1. **Unauthorized client modifications are against VRChat Terms of Service.** Use of this software can result in a ban from the game.
+      1. While we try to keep issues to a minimum, **this software may result in crashes and unwanted behaviour ("bugs").** Don't ask VRChat for support or you may get banned.
+   1. We are not responsible if something happens, like your account getting banned or VRChat crashing.
 1. This software is provided to you under the terms of the MIT Open-Source License agreement. By forking or using it, you agree to the terms of said license, as well.
 
 ## Current features
